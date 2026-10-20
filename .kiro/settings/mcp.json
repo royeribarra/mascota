@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "blender": {
+      "command": "/opt/homebrew/bin/uvx",
+      "args": ["--python", "3.11", "mcp-for-blender"],
+      "env": {
+        "UV_PYTHON_PREFERENCE": "only-managed",
+        "BLENDER_HOST": "localhost",
+        "BLENDER_PORT": "9876",
+        "DISABLE_TELEMETRY": "true"
+      },
+      "disabled": false
+    }
+  }
+}
