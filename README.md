@@ -147,11 +147,7 @@ mascota/
 
 **Para mañana — próxima sesión:**
 
-1. **Comprimir GLBs** antes de seguir — de 27MB → ~4MB con gltf-transform:
-   ```bash
-   cd web-app
-   npx gltf-transform optimize public/models/minotauro-base.glb public/models/minotauro-base.glb --texture-compress webp
-   ```
+1. ~~**Comprimir GLBs**~~ ✅ Hecho — de 28.8MB → 0.87MB (ver "Optimización de modelos para web")
 
 2. **Generar niveles 1, 2, 3** con Hyper3D y moverlos a `reference/hyper3d/`
    - Importarlos en Blender, ajustar color, exportar como:
@@ -173,3 +169,26 @@ mascota/
 - El visor web ya está preparado para agregar el selector de outfits
 - Generadores 3D disponibles: Hyper3D Rodin (de pago), Hunyuan3D (bloqueado geográficamente)
 - MCP Blender corre en `localhost:9876`, addon en `~/Library/Application Support/Blender/5.2/scripts/addons/blender_mcp.py`
+
+---
+
+## Optimización de modelos para web
+
+El GLB que sale de Blender (`exports/`) es el original de alta calidad y **no se modifica**.
+La versión que usa la web (`web-app/public/models/`) se genera optimizada con
+[gltf-transform](https://gltf-transform.dev/):
+
+```bash
+cd web-app
+npm run optimize:models
+```
+
+| | Original (`exports/`) | Web (`public/models/`) |
+|---|---|---|
+| Peso | 28.8 MB | 0.87 MB |
+| Triángulos | ~650.000 | ~52.000 |
+| Texturas | PNG 2048×2048 | WebP 2048×2048 |
+| Compresión de malla | — | Meshopt |
+
+- Cada vez que se re-exporte el modelo desde Blender, correr `npm run optimize:models`.
+- El decodificador Meshopt ya viene incluido en `useGLTF` de drei, no requiere configuración extra.

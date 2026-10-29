@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "optimize:models": "gltf-transform optimize ../exports/minotauro-base.glb public/models/minotauro-base.glb --compress meshopt --simplify-ratio 0.08 --simplify-error 0.001 --texture-compress webp --texture-size 2048"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.9",
@@ -17,6 +18,7 @@
     "three": "^0.186.1"
   },
   "devDependencies": {
+    "@gltf-transform/cli": "^4.5.1",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
