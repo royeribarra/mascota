@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "optimize:models": "gltf-transform optimize ../exports/minotauro-base.glb public/models/minotauro-base.glb --compress meshopt --simplify-ratio 0.08 --simplify-error 0.001 --texture-compress webp --texture-size 2048"
+    "optimize:models": "node scripts/optimize-models.mjs"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.9",
