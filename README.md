@@ -190,5 +190,30 @@ npm run optimize:models
 | Texturas | PNG 2048×2048 | WebP 2048×2048 |
 | Compresión de malla | — | Meshopt |
 
-- Cada vez que se re-exporte el modelo desde Blender, correr `npm run optimize:models`.
+- Cada vez que se re-exporte un modelo desde Blender, correr `npm run optimize:models` (regenera todos los modelos de la lista en `web-app/scripts/optimize-models.mjs`).
 - El decodificador Meshopt ya viene incluido en `useGLTF` de drei, no requiere configuración extra.
+
+---
+
+## Accesorios de Theo
+
+Los 10 accesorios están modelados a mano en Blender sobre el cuerpo base (`minotauro-base`),
+con la paleta de las imágenes de referencia (negro, dorado y verde). Cada GLB ya viene en la
+posición correcta, así que en la web basta con cargarlo encima del modelo base.
+
+| Accesorio | Referencia | Original (`reference/`) | Web (`public/models/`) |
+|---|---|---|---|
+| Lentes | `lentes.jpeg` | `lentes.glb` | `lentes.glb` |
+| Gorra | `gorra.jpeg` | `gorra.glb` | `gorra.glb` |
+| Corona olímpica | `corona olimpica.jpeg` | `corona.glb` | `corona.glb` |
+| Auriculares | `auriculares.jpeg` | `audifono.glb` | `audifono.glb` |
+| Brazalete | `brazalete.jpeg` | `brazalete.glb` | `brazalete.glb` |
+| Mochila | `mochila.jpeg` | `mochila.glb` | `mochila.glb` |
+| Túnica deportiva | `tunida deportiva.jpeg` | `tunica.glb` | `tunica.glb` |
+| Sudadera del club | `sudadera club.jpeg` | `sudadera.glb` | `sudadera.glb` |
+| Bufanda de equipos | `bufanda equipos.jpeg` | `bufanda.glb` | `bufanda.glb` |
+| Capa legendaria | `capa legendaria.jpeg` | `capa.glb` | `capa.glb` |
+
+- El archivo de trabajo es `blender/accesorios-theo.blend` (colecciones `ACC_*`).
+- Solo encajan en `minotauro-base`; `fase1`, `fase2` y `fase3` tienen otro tamaño y forma.
+- La gorra y la corona ocupan el mismo lugar en la cabeza, no se deben usar juntas.
